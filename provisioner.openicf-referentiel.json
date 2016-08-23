@@ -1,0 +1,148 @@
+{
+    "name" : "referentiel",
+    "displayName" : "REFERENTIEL-ScriptedSQLConnector",
+    "description" : "referentiel bdd",
+    "version" : "1.4.1.0",
+    "author" : "youssef",
+    "connectorRef" : {
+        "bundleName" : "org.forgerock.openicf.connectors.referentiel-connector",
+        "bundleVersion" : "1.4.1.0",
+        "connectorName" : "org.forgerock.openicf.connectors.referentiel.REFERENTIELConnector"
+    },
+    "producerBufferSize" : 100,
+    "connectorPoolingSupported" : true,
+    "poolConfigOption" : {
+        "maxObjects" : 1,
+        "maxIdle" : 1,
+        "maxWait" : 150000,
+        "minEvictableIdleTimeMillis" : 120000,
+        "minIdle" : 1
+    },
+    "operationTimeout" : {
+        "CREATE" : -1,
+        "TEST" : -1,
+        "AUTHENTICATE" : -1,
+        "SEARCH" : -1,
+        "UPDATE" : -1,
+        "DELETE" : -1,
+        "SYNC" : -1,
+        "SCHEMA" : -1,
+        "GET" : -1,
+        "VALIDATE" : -1,
+        "SCRIPT_ON_CONNECTOR" : -1,
+        "SCRIPT_ON_RESOURCE" : -1
+    },
+    "configurationProperties" : {
+        "username" : "youssef",
+        "password" : {
+            "$crypto" : {
+                "type" : "x-simple-encryption",
+                "value" : {
+                    "cipher" : "AES/CBC/PKCS5Padding",
+                    "data" : "t8E00xO2VSuD6Stod2azuQ==",
+                    "iv" : "UfT+1LWFwU6p8WcIsN7YBQ==",
+                    "key" : "openidm-sym-default"
+                }
+            }
+        },
+        "driverClassName" : "com.mysql.jdbc.Driver",
+        "url" : "jdbc:mysql://localhost:3306/classicmodels",
+        "scriptRoots" : [
+            "jar:file:/home/youssef/openidm/connectors/referentiel-connector-1.4.1.0.jar!/script/referentiel/"
+        ],
+        "classpath" : [
+            "jar:file:/home/youssef/openidm/connectors/referentiel-connector-1.4.1.0.jar!/scriptclass/referentiel/"
+        ],
+        "reloadScriptOnExecution" : false,
+        "authenticateScriptFileName" : "AuthenticateScript.groovy",
+        "createScriptFileName" : "CreateScript.groovy",
+        "testScriptFileName" : "TestScript.groovy",
+        "searchScriptFileName" : "SearchScript.groovy",
+        "deleteScriptFileName" : "DeleteScript.groovy",
+        "updateScriptFileName" : "UpdateScript.groovy",
+        "syncScriptFileName" : "SyncScript.groovy",
+        "schemaScriptFileName" : "SchemaScript.groovy",
+        "readSchema" : false
+    },
+    "systemActions" : [ ],
+    "syncFailureHandler" : {
+        "maxRetries" : 5,
+        "postRetryAction" : "logged-ignore"
+    },
+    "objectTypes" : {
+        "account" : {
+            "$schema" : "http://json-schema.org/draft-03/schema",
+            "id" : " __ACCOUNT__",
+            "type" : "object",
+            "nativeType" : "__ACCOUNT__",
+            "properties" : {
+                "contactFirstName" : {
+                    "type" : "string",
+                    "nativeType" : "string",
+                    "nativeName" : "contactFirstName",
+                    "required" : true
+                },
+                "comptes" : {
+                    "type" : "array",
+                    "nativeType" : "object",
+                    "nativeName" : "comptes",
+                    "required" : false,
+                    "items" : {
+                        "type" : "object",
+                        "properties" : {
+                            "year" : "string",
+                            "make" : "string",
+                            "model" : "string"
+                        }
+                    }
+                },
+                "uid" : {
+                    "type" : "string",
+                    "nativeType" : "string",
+                    "nativeName" : "__NAME__",
+                    "required" : true
+                },
+                "customerName" : {
+                    "type" : "string",
+                    "nativeType" : "string",
+                    "nativeName" : "customerName",
+                    "required" : false
+                },
+                "contactLastName" : {
+                    "type" : "string",
+                    "nativeType" : "string",
+                    "nativeName" : "contactLastName",
+                    "required" : true
+                }
+            }
+        },
+        "comptes" : {
+            "$schema" : "http://json-schema.org/draft-04/schema",
+            "id" : "__COMPTES__",
+            "type" : "object",
+            "nativeType" : "__COMPTES__",
+            "properties" : {
+                "idcompte" : {
+                    "type" : "string",
+                    "nativeType" : "string",
+                    "nativeName" : "idcompte",
+                    "required" : false
+                },
+                "login" : {
+                    "type" : "string",
+                    "nativeType" : "string",
+                    "nativeName" : "login",
+                    "required" : false
+                },
+                "idpersonne" : {
+                    "type" : "string",
+                    "nativeType" : "string",
+                    "nativeName" : "idpersonne",
+                    "required" : false
+                }
+            }
+        }
+    },
+    "operationOptions" : { },
+    "enabled" : true
+}
